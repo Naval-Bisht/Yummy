@@ -1,10 +1,10 @@
-package com.example.yummy;
+package org.naval.assignment;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class YummyApplicationTests {
+class AssignmentApplicationTests {
 
     @Test
     void contextLoads() {

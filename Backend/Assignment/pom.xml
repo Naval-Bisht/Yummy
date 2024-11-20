@@ -8,11 +8,11 @@
         <version>3.3.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>Yummy</artifactId>
+    <groupId>org.naval</groupId>
+    <artifactId>Assignment</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Yummy</name>
-    <description>Yummy</description>
+    <name>Assignment</name>
+    <description>Assignment</description>
     <url/>
     <licenses>
         <license/>
