@@ -50,6 +50,10 @@ public class UserController {
         return ResponseEntity.ok(customerService.getProduct(request));
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody @Valid CustomerRequest request) {
+        return ResponseEntity.ok(customerService.login(request));
+    }
 
 }
 

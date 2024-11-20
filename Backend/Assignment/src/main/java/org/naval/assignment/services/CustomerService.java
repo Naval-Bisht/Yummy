@@ -1,12 +1,14 @@
 package org.naval.assignment.services;
 
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.naval.assignment.dto.CustomerRequest;
 import org.naval.assignment.dto.Productrequest;
 import org.naval.assignment.entity.Customer;
 import org.naval.assignment.entity.Product;
 import org.naval.assignment.helper.EncryptPassword;
+import org.naval.assignment.helper.JWTHelper;
 import org.naval.assignment.mapper.CustomerMapper;
 import org.naval.assignment.mapper.ProductMapper;
 import org.naval.assignment.repo.CustomerRepo;
@@ -21,7 +23,7 @@ public class CustomerService {
     private final CustomerMapper mapper;
     private final CustomerRepo customerRepo;
     private final EncryptPassword encryptPassword;
-
+    private final JWTHelper jwtHelper;
     private final ProductMapper productMapper;
     private final ProductRepo productRepo;
 
@@ -75,4 +77,15 @@ public class CustomerService {
     }
 
 
+    public String login(@Valid CustomerRequest request) {
+
+        Customer customer = customerRepo.findByEmail(request.email()).orElse(null);
+        if(!encryptPassword.validates(request.password(), customer.getPassword())) {
+            return "Wrong Password or Email";
+        }
+
+
+        return jwtHelper.generateToken(request.email());
+
+    }
 }
